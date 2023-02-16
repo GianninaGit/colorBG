@@ -5,19 +5,24 @@ struct ColorBrain {
     
     var lista = [UIColor.red, UIColor.blue, UIColor.cyan, UIColor.green, UIColor.yellow, UIColor.orange]
     
-    var color = 0
+    var colorIndex = 0
+    
+    /*
+    mutating func getColor() -> UIColor {
+        let color = lista[colorIndex]
+        colorIndex += 1
+        if(colorIndex >= lista.count) {
+            colorIndex = 0
+        }
+        return color
+    }
+    */
     
     mutating func getColor() -> UIColor {
-        updateColor()
-        return lista[color-1]
-    }
-    
-    mutating func updateColor()  {
-        if color < lista.count {
-            color += 1
-        } else {
-            color = 1
-        }
+        let color = lista[colorIndex % lista.count]
+        colorIndex += 1
+        return color
     }
 }
+
 
